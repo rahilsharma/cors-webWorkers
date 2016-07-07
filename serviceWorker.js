@@ -6,6 +6,8 @@ setInterval(function(){
         makeCorsRequest();
     },20000);
 self.addEventListener('message', function (e) {
+    console.log("got message from main page");
+    console.log(e);
 }, false);
 // Create the XHR object.
 function createCORSRequest(method, url) {
@@ -47,6 +49,7 @@ function makeCorsRequest() {
             curPrice = parseFloat((dataJ[0].l).replace(",", ""));
         }
         console.log(curPrice);
+        postMessage(curPrice);
     };
 
     xhr.onerror = function() {
